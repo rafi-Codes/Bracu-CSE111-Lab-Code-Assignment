@@ -79,3 +79,51 @@ public class Employee {
         }
     }
 }
+
+// Task 04
+public class MobilePhone {  
+    public String[] contactsName = new String[0];
+    public int[] contactsNumber = new int[0];
+    public int storedContacts;
+
+    public void setContactCapacity(int size){
+        String[] temp = new String[size];
+        int[] tempN = new int[size];
+        for (int i = 0; i < contactsName.length; i++){
+            temp[i] = contactsName[i];
+            tempN[i] = contactsNumber[i];
+        }
+        contactsName = temp;
+        contactsNumber = tempN;
+    }
+
+    public void addContact(String name, int number){
+        if (storedContacts < contactsName.length){
+            contactsName[storedContacts] = name;
+            contactsNumber[storedContacts] = number;
+            storedContacts++;
+            System.out.println("The contact of " + name + " is added.");
+        } else {
+            System.out.println("Storage Full!!");
+            storedContacts = contactsName.length;
+        }
+    }
+
+    public void details(){
+        System.out.println("Total Contacts: " + storedContacts);
+        System.out.println("Contact List:");
+        for (int i = 0; i < storedContacts; i++){
+            System.out.println(contactsName[i] + ":" + contactsNumber[i]);
+        }
+    }
+
+    public void makeCall(int number){
+        for (int i = 0; i < storedContacts; i++){
+            if (contactsNumber[i] == number){
+                System.out.println("Calling " + contactsName[i] + " . . .");
+                return;
+            }
+        }
+        System.out.println("Calling " + number + " . . .");
+    }
+}
