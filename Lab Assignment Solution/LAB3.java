@@ -122,3 +122,51 @@ public class Reader {
     }
 }
 
+// Task 04
+public class MoneyTracker {  
+
+    public String name = null;
+    public double balance = 0.0;
+    public double lastSpent = 0.0;
+    public double lastIncome = 0.0;
+
+    public MoneyTracker(){
+        System.out.println("A new money tracker has been launched.");
+    }
+
+    public void createTracker (String name){
+        this.name = name;
+        balance = 1.0;
+    }
+    
+    public void income (double income){
+        balance += income;
+        lastIncome = income;
+        System.out.println("Balance Updated!");
+    }
+
+    public void expense (double expense){
+        if (balance >= expense) {
+            balance -= expense;
+            lastSpent = expense;
+            if (balance > 0) {
+                System.out.println("Balance Updated!");
+            } else {
+                System.out.println("You're broke!");
+            }
+        } else {
+            System.out.println("Not enough balance.");
+        }
+    }
+
+    public String info() {
+       return "Name: "+ name + "\n" +"Current Balance: " + balance;
+    }
+
+    public void showHistory (){
+        System.out.println("Last added: " + lastIncome);
+        System.out.println("Last spent: " + lastSpent);
+    }
+}
+
+
