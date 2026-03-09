@@ -68,3 +68,57 @@ public class Cart {
         this.discount = discount;
     }
 }
+
+// Task 03
+public class Reader {  
+
+    public String name;
+    public int bookCapacity;
+    public String[] books;
+    public int booksAdded = 0;
+
+    public Reader (String name, int bookCapacity){
+        this.name = name;
+        this.bookCapacity = bookCapacity;
+        books = new String[bookCapacity];
+        System.out.println("A new reader is created!");
+    }
+    
+    public Reader (String name){
+        this(name,2);
+    }
+
+    public void readerInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Capacity: " + bookCapacity);
+        System.out.println("Books:");
+        if (booksAdded <= 0){
+            System.out.println("No books added yet");
+        } 
+        else {
+            for (int i = 0; i < bookCapacity; i++){
+                System.out.println("Book " + (i+1) +": " + books[i]);
+            }
+        }
+    }
+
+    public void addBook (String book){
+        if (booksAdded < bookCapacity){
+            books[booksAdded++] = book;
+        } else {
+            System.out.println("No more capacity");
+            booksAdded = bookCapacity;
+        }
+    }
+
+    public void updateCapacity (int newCapacity){
+        String[] temp = new String[newCapacity];
+        for (int i = 0; i < bookCapacity; i++){
+            temp[i] = books[i];
+        }
+        books = temp;
+        bookCapacity = newCapacity;
+        System.out.println("Capacity has changed to " + bookCapacity);
+    }
+}
+
