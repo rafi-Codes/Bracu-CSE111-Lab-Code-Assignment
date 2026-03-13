@@ -34,4 +34,51 @@ public class Triangle {
     }
 }
 
+// Task 02
+public class Player {  
+
+    public String name;
+    public int currrentHp;
+    public String defeatedList = "";
+
+    public Player (String name, int hp){
+        this.name = name;
+        currrentHp = hp;
+        System.out.println(name +" joined the game\nHP: " + currrentHp);
+    }
+
+    public Player (String name){
+       this(name, 100);
+    }
+
+    public void viewInfo (){
+        System.out.println("Player name: " + name +"\nCurrent HP: " + currrentHp);
+        if (defeatedList.length() > 0) System.out.println("Defeated:\n" + defeatedList);
+    }
+    
+    public void defeatVillain (Player p){
+        if (currrentHp >= p.currrentHp) {
+            System.out.println("defeated " + p.name);
+            currrentHp += p.currrentHp;
+            defeatedList += p.name + ", ";
+        } else {
+            System.out.println("failed to defeat " + p.name);
+        }
+    }
+
+    public void defeatVillain (String name, int hp){
+        if (currrentHp >= hp) {
+            System.out.println("defeated " + name);
+            currrentHp += hp;
+            defeatedList +=  name + ", " ;
+        } else {
+            System.out.println("failed to defeat " + name);
+        }
+    }
+
+    public void defeatVillain (char multiplier, String name, int hp){
+        currrentHp *= ((int)(multiplier - '0'));
+        defeatVillain(name,hp);
+    }
+}
 
