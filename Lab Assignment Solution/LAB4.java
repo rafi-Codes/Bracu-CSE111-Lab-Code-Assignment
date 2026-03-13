@@ -82,3 +82,91 @@ public class Player {
     }
 }
 
+// Task 03
+public class Student {  
+    public String name;
+    public int id;
+    public String department;
+    public String email;
+    private String password;
+    private boolean loginStatus;
+    public String[] advisedCourses = new String[3];
+
+    public Student(String name, int id, String department) {
+        this.department = department;
+        this.id = id;
+        this.name = name;
+        System.out.println("Student object is created");
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setLoginStatus(boolean loginStatus) {
+        this.loginStatus = loginStatus;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public boolean isLoginStatus() {
+        return loginStatus;
+    }
+}
+
+public class Connect {  
+
+    public int totalAdvisee = 0;
+    public Student[] students = new Student[5];
+
+    public Connect (){
+        System.err.println("Connect is ready to use!");
+    }
+    
+    public void login (Student s){
+        if (s.email == null || s.getPassword() == null){
+            System. out.println("Email and password need to be set.");
+        } else {
+            s.setLoginStatus(true);
+            System.out.println("Login successful");
+        }
+    }
+
+    public void advising (Student s){
+        if(!s.isLoginStatus()){
+            System.out.println("Please login to advise courses!");
+        } else {
+            System.out.println("You haven't selected any courses.");
+        }
+    }
+
+    public void advising (Student s, String course1, String course2, String course3){
+        if(!s.isLoginStatus()){
+            System.out.println("Please login to advise courses!");
+        } else {
+            s.advisedCourses[0] = course1;
+            s.advisedCourses[1] = course2;
+            s.advisedCourses[2] = course3;
+            students[totalAdvisee++] = s;
+            System.err.println("Advising successful!");
+        }
+    }
+
+    public void advising (Student s, String course1, String course2, String course3, String course4){
+        System.err.println("You need special approval to take more than 3 courses.");
+    }
+
+    public void allAdviseeInfo(){
+        System.out.println("Total Advisee: " + totalAdvisee);
+        for  (int i = 0; i < totalAdvisee; i++){
+            System.out.printf("Name: %s ID: %d\n", students[i].name, students[i].id);
+            System.out.println("Department: " + students[i].department);
+            for (int j = 0; j < students[i].advisedCourses.length; j++){
+                System.out.print(students[i].advisedCourses[j] + " ");
+            }
+            System.err.println("\n==============");
+        }
+    }
+}
