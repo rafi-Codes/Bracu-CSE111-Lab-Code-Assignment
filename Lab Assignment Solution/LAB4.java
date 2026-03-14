@@ -53,7 +53,7 @@ public class Player {
     }
 
     public void viewInfo (){
-        System.out.println("Player name: " + name +"\nCurrent HP: " + currentHp);
+        System.out.println("Player Name: " + name +"\nCurrent HP: " + currentHp);
         if (defeated > 0) {
             System.out.println("Defeated:");
             for (int i = 0; i < defeated; i++){
