@@ -170,3 +170,59 @@ public class Connect {
         }
     }
 }
+
+// Task 04
+public class Cargo {  
+    private String itemName;
+    private  int weight;
+
+    public Cargo(String itemName, int weight) {
+        this.itemName = itemName;
+        this.weight = weight;
+    }
+    
+    public String getItemName() {
+        return itemName;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+}
+
+public class Spaceship {  
+    private String name;
+    private  int currentWeight;
+    private int MAX_CAPACITY;
+    public int loadedItems;
+    public Cargo[] cargoItems = new Cargo[100];
+
+    public Spaceship(String name, int MAX_CAPACITY) {
+        this.name = name;
+        this.MAX_CAPACITY = MAX_CAPACITY;
+    }
+
+    public void loadCargo (Cargo c){
+        if ((currentWeight + c.getWeight()) <= MAX_CAPACITY){
+            cargoItems[loadedItems++] = c;
+            currentWeight += c.getWeight();
+        } else {
+            int Exceeds = (currentWeight + c.getWeight()) - MAX_CAPACITY;
+            System.out.printf("Warning: Unable to load %s inside %s. Exceeds capacity by %d.\n", c.getItemName(), name, Exceeds);
+        }
+    }
+
+    public void displayDetails() {
+        System.out.println("Spaceship Name: "+ name);
+        System.out.println("Capacity: " + MAX_CAPACITY);
+        System.out.println("Current Cargo Weight: " + currentWeight);
+        if (loadedItems > 0) {
+            System.out.print("Cargo:");
+            for (int i = 0; i < loadedItems; i++){
+                System.out.print(cargoItems[i].getItemName() + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
