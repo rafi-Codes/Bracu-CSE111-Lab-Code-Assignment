@@ -175,6 +175,7 @@ public class Connect {
         for  (int i = 0; i < totalAdvisee; i++){
             System.out.printf("Name: %s ID: %d\n", students[i].name, students[i].id);
             System.out.println("Department: " + students[i].department);
+            System.out.println("Advised Courses:");
             for (int j = 0; j < students[i].advisedCourses.length; j++){
                 System.out.print(students[i].advisedCourses[j] + " ");
             }
