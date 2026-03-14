@@ -167,7 +167,7 @@ public class Connect {
     }
 
     public void advising (Student s, String course1, String course2, String course3, String course4){
-        System.err.println("You need special approval to take more than 3 courses.");
+        System.out.println("You need special approval to take more than 3 courses.");
     }
 
     public void allAdviseeInfo(){
