@@ -38,13 +38,14 @@ public class Triangle {
 public class Player {  
 
     public String name;
-    public int currrentHp;
-    public String defeatedList = "";
+    public int currentHp;
+    public String[] defeatedList = new String[5];
+    public int defeated;
 
     public Player (String name, int hp){
         this.name = name;
-        currrentHp = hp;
-        System.out.println(name +" joined the game\nHP: " + currrentHp);
+        currentHp = hp;
+        System.out.println(name +" joined the game\nHP: " + currentHp);
     }
 
     public Player (String name){
@@ -52,32 +53,43 @@ public class Player {
     }
 
     public void viewInfo (){
-        System.out.println("Player name: " + name +"\nCurrent HP: " + currrentHp);
-        if (defeatedList.length() > 0) System.out.println("Defeated:\n" + defeatedList);
+        System.out.println("Player name: " + name +"\nCurrent HP: " + currentHp);
+        if (defeated > 0) {
+            System.out.println("Defeated:");
+            for (int i = 0; i < defeated; i++){
+                System.out.print(defeatedList[i]);
+            }
+            System.out.println();
+        }
     }
     
     public void defeatVillain (Player p){
-        if (currrentHp >= p.currrentHp) {
-            System.out.println("defeated " + p.name);
-            currrentHp += p.currrentHp;
-            defeatedList += p.name + ", ";
-        } else {
-            System.out.println("failed to defeat " + p.name);
+        if (defeated < defeatedList.length){
+            if (currentHp >= p.currentHp) {
+                System.out.println("defeated " + p.name);
+                currentHp += p.currentHp;
+                defeatedList[defeated++] = p.name + ", ";
+            } else {
+                System.out.println("failed to defeat " + p.name);
+            }
         }
     }
 
     public void defeatVillain (String name, int hp){
-        if (currrentHp >= hp) {
-            System.out.println("defeated " + name);
-            currrentHp += hp;
-            defeatedList +=  name + ", " ;
-        } else {
-            System.out.println("failed to defeat " + name);
+        if (defeated < defeatedList.length){
+            if (currentHp >= hp) {
+                System.out.println("defeated " + name);
+                currentHp += hp;
+                defeatedList[defeated++] =  name + ", " ;
+            } else {
+                System.out.println("failed to defeat " + name);
+            }
         }
     }
 
     public void defeatVillain (char multiplier, String name, int hp){
-        currrentHp *= ((int)(multiplier - '0'));
+        currentHp *= ((int)(multiplier - '0'));
+        System.out.println("HP with " + multiplier + "x boost: " + currentHp);
         defeatVillain(name,hp);
     }
 }
