@@ -166,7 +166,7 @@ public class Connect {
             for (int j = 0; j < students[i].advisedCourses.length; j++){
                 System.out.print(students[i].advisedCourses[j] + " ");
             }
-            System.err.println("\n==============");
+            System.out.println("\n==============");
         }
     }
 }
