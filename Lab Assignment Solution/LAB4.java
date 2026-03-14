@@ -134,7 +134,7 @@ public class Connect {
     public Student[] students = new Student[5];
 
     public Connect (){
-        System.err.println("Connect is ready to use!");
+        System.out.println("Connect is ready to use!");
     }
     
     public void login (Student s){
@@ -162,7 +162,7 @@ public class Connect {
             s.advisedCourses[1] = course2;
             s.advisedCourses[2] = course3;
             students[totalAdvisee++] = s;
-            System.err.println("Advising successful!");
+            System.out.println("Advising successful!");
         }
     }
 
