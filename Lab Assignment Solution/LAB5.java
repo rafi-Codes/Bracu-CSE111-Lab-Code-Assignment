@@ -277,4 +277,73 @@ public class Animalkeepers {
     }
 }
 
+// Task 05
+public class Event {
+
+    private String date;
+    private String name;
+    public static Event[] Events = new Event[5];
+    public static int storedEvent = 0;
+
+    public Event(String name, String date) {
+        this.date = date;
+        this.name = name;
+        if (storedEvent < Events.length) Events[storedEvent++] = this;
+    }
+
+    public static void allEventInfo() {
+        System.out.println("Total Events: "+ storedEvent +"\nEvent Details:");
+        if (storedEvent > 0) {
+            for (int i = 0; i < storedEvent; i++) {
+                System.out.println("Event "+ (i + 1) +":");
+                System.out.println(Events[i].details());
+            }
+        }
+    }
+
+    public String details() {
+        return "Name: "+ name +"\nDate: "+ date;
+    }
+    
+    public String getDate() {
+        return this.date;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+}
+
+public class Organizer {
+	public String name;
+    public Event[] organizedEvents = new Event[4];
+    public int orgCount = 0;
+    
+    public Organizer() {
+        System.out.println("Please provide the organizer's name");
+    }
+    
+    public Organizer(String name) {
+        this.name = name;
+    }
+
+    public void organizeEvent(Event ev) {
+        if (orgCount < organizedEvents.length) {
+            organizedEvents[orgCount++] = ev;
+            System.out.println(name + " successfully organized "+ ev.getName());
+        }
+    }
+
+    public void searchEventByDate(String date) {
+        boolean found = false;
+        for (int i = 0; i < orgCount; i++){
+            if (date.equals(organizedEvents[i].getDate())){
+                System.err.println(organizedEvents[i].getName());
+                found= true;
+                break;
+            }
+        }
+        if (!found) System.out.println("No event is scheduled for " + date);
+    }
+}
 
