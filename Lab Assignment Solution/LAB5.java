@@ -338,7 +338,7 @@ public class Organizer {
         boolean found = false;
         for (int i = 0; i < orgCount; i++){
             if (date.equals(organizedEvents[i].getDate())){
-                System.err.println(organizedEvents[i].getName());
+                System.out.println(organizedEvents[i].getName());
                 found= true;
                 break;
             }
