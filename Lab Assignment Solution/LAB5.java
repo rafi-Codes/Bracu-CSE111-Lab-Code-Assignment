@@ -193,3 +193,88 @@ public class Artifact {
     }
 }
 
+// Task 04
+public class Animalkeepers {
+
+    public int id;
+    public String name;
+    public static int kCount = 0;
+    public static int tCount = 0;
+    public static String[] Animals = {"Lion", "Tiger", "Seal", "Gorilla", "Deer"};
+    public static String[] Tasks = new String[Animals.length];
+
+
+    public Animalkeepers (String name) {
+        this.name = name;
+        id = 100 + (++kCount);
+        System.out.println(name + " with ID "+ id +" got the job!");
+    }
+
+    public void doTask(String animal, String task) {
+        boolean assigned = false;
+        switch(animal) {
+            case "Lion":
+                Tasks[0] = task + "  (Keeper - "+ name + ") === " + "Lion";
+                assigned = true;
+                break;
+            case "Tiger":
+                Tasks[1] = task + "  (Keeper - "+ name + ") === " + "Tiger";
+                assigned = true;
+                break;
+            case "Seal":
+                Tasks[2] = task + "  (Keeper - "+ name + ") === " + "Seal";
+                assigned = true;
+                break;
+            case "Gorilla":
+                Tasks[3] = task + "  (Keeper - "+ name + ") === " + "Gorilla";
+                assigned = true;
+                break;
+            case "Deer":
+                Tasks[4] = task + "  (Keeper - "+ name + ") === " + "Deer";
+                assigned = true;
+                break;
+            default:
+                System.out.println("Animal not in the Safari");
+                break;
+        }
+        if (assigned){
+            System.out.println("Task assigned to "+ name);
+        }
+        tCount = tasksCount();
+    }
+
+    public static void printTasks() {
+        if (tCount > 0){
+            for (int i = 0; i < Tasks.length; i++){
+                if (Tasks[i] != null){
+                    System.out.println(Tasks[i]);
+                }
+            }
+        } else {
+            System.out.println("No tasks assigned.");
+        }
+        
+    }
+
+    public static int tasksCount() {
+        int count = 0;
+        for (int i = 0; i < Tasks.length; i++){
+            if (Tasks[i] != null){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void details() {
+        if (kCount > 0) {
+            System.out.println("Total Animal Keeper: " + kCount);
+            System.out.println("Total Task assigned: " + tCount);
+        } else {
+            System.out.println("No Animal Keepers working yet.");
+        }
+        printTasks();
+    }
+}
+
+
