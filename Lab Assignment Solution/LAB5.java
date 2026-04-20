@@ -110,3 +110,86 @@ public class Character {
     }
 }
 
+// Task 03
+public class Artifact {
+
+    private int power;
+    private String name;
+    private String adderName;
+
+    private static int maxPower = 0;
+    private static Artifact[] vault = new Artifact[4];
+    private static int stored = 0;
+    private static String strongest;
+
+    public Artifact (String name, String adderName) {
+        this.name = name;
+        this.adderName = adderName;
+        power = CalcPower();
+        CalcStrongest();    
+    }
+
+    public Artifact (String name) {
+        this(name,"Okabe");
+    }
+
+    public static void AddtoVault(Artifact a) {
+        if (stored < vault.length) {
+            vault[stored++] = a;
+            System.out.println(a.GetAdderName() + " added "+ a.GetName() +" successfully to the vault.");
+        } else { 
+            System.out.println("!!"+ a.GetAdderName() + " unsuccessful in adding artifact to the vault!!");
+        }
+    }
+
+    public static void labReport() {
+        System.out.println("=== Future Gadget Lab ===");
+        for (int i = 0; i < stored; i++){
+            vault[i].revealArtifact();
+        }
+    }
+
+    public void revealArtifact() {
+        System.out.println(GetName() + " added by "+ GetAdderName() +" has power of " + GetPower() + ".");
+    }
+
+    public void changeName(String name){
+        this.name = name;
+        power = CalcPower();
+        CalcStrongest(); 
+        System.out.println("Name changed and power recalculated.");
+    }
+
+    public int CalcPower() {
+        int sum = 0;
+        int idx = name.length() % 2;
+        for (int i = idx; i < name.length(); i+=2){
+            sum += name.charAt(i);
+        }
+        return sum;
+    }
+
+    public void CalcStrongest() {
+        if (power > maxPower){
+            strongest = name;
+            maxPower = power;
+        }
+    }
+
+    public String GetName() {
+        return name;
+    }
+
+    public String GetAdderName() {
+        return adderName;
+    }
+
+    public int GetPower() {
+        return power;
+    }
+
+    public static String strongest(){
+        return strongest;
+    }
+}
+
