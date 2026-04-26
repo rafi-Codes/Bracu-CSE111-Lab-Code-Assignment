@@ -63,3 +63,22 @@ public class CD extends Product {
     return getIdTitlePrice() + " Band: " + band + " Duration: "+ duration + " minutes Genre: " + genre;
   }
 }
+
+// Task 04
+public class ComplexNumber extends RealNumber {
+  public double imgVal;
+
+  public ComplexNumber (double realVal, double imgVal){
+    super(realVal);
+    this.imgVal = imgVal;
+  }
+
+  public ComplexNumber (){
+    super(1.0);
+    this.imgVal = 1.0;
+  }
+
+  public String details(){
+    return getReal() + "\nImaginaryPart: " + imgVal;
+  }
+}
