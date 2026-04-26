@@ -14,3 +14,18 @@ public class Cow extends Animal{
         super.sound = sound;
     }
 }
+
+// Task 02
+public class CheckingAccount extends Account {
+  public static int count = 0;
+
+  public CheckingAccount (double balance){
+    super(balance);
+    count++;
+  }
+
+  public CheckingAccount (){
+    super(0.0);
+    count++;
+  }
+}
