@@ -82,3 +82,32 @@ public class ComplexNumber extends RealNumber {
     return getReal() + "\nImaginaryPart: " + imgVal;
   }
 }
+
+// Task 05
+public class CSEStudent extends Student {
+  public static int cseStudentCount;
+  public static String labCourses = "CSE110 CSE111 CSE220 CSE221";
+
+  public CSEStudent(String name, int id){
+    super(name,id);
+    cseStudentCount++;
+  }
+
+  public void addLabBasedCourse(String course){
+    if(labCourses.contains(course)){
+
+      if(courses.equals("")) 
+          courses += course;
+      else 
+          courses += (" " + course);
+
+    } else {
+      System.out.println("It is not a lab based course!");
+    }
+  }
+
+  public static void details(){
+    System.out.println("Total CSE Students: " + cseStudentCount);
+    System.out.println("Available Lab Based Courses:\n"+ labCourses);
+  }
+}
