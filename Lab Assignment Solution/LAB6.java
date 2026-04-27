@@ -94,7 +94,7 @@ public class CSEStudent extends Student {
   }
 
   public void addLabBasedCourse(String course){
-    if(labCourses.contains(course)){
+    if(labCourses.contains(course) && course.length() == 6){
 
       if(courses.equals("")) 
           courses += course;
