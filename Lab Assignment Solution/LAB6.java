@@ -37,9 +37,9 @@ public class Book extends Product {
   public String publisher;
 
   public Book (int id, String title, int price, String ISBN, String publisher){
+    super(id,title,price);
     this.ISBN = ISBN;
     this.publisher = publisher;
-    super(id,title,price);
   }
 
   public String printDetail (){
@@ -53,10 +53,10 @@ public class CD extends Product {
   public String genre;
 
   public CD (int id, String title, int price, String band, int duration, String genre){
+    super(id,title,price);
     this.duration = duration;
     this.band = band;
     this.genre = genre;
-    super(id,title,price);
   }
 
   public String printDetail (){
