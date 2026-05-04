@@ -296,3 +296,65 @@ public class ElectricCar extends Vehicle {
     }
 }
 
+// Task 05
+public class Manager extends Employee {
+    public double bonusPercent;
+    public double finalSalary;
+
+    public Manager(String name, double baseSalary, int hoursWorked, double bonusPercent) {
+        super(name, baseSalary, hoursWorked);
+        this.bonusPercent = bonusPercent;
+        this.finalSalary = baseSalary;
+    }
+
+    public void calculateSalary() {
+        if (getHoursWorked() > 40) {
+            finalSalary = getBaseSalary() + (getBaseSalary() * (bonusPercent / 100));
+        } else {
+            finalSalary = getBaseSalary();
+        }
+    }
+
+    public void requestIncrement(double amount) {
+        if (getHoursWorked() > 100) {
+            setBaseSalary(getBaseSalary() + amount);
+            System.out.println("$" + amount + " Increment approved.");
+        } else if (getHoursWorked() > 80) {
+            setBaseSalary(getBaseSalary() + (amount * 0.5));
+            System.out.println("$" + (amount * 0.5) + " Increment approved.");
+        } else {
+            System.out.println("Increment denied.");
+        }
+    }
+
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Bonus: " + bonusPercent + " %");
+        System.out.println("Final Salary: $" + finalSalary);
+    }
+}
+
+public class Developer extends Employee {
+    public String language;
+    public double finalSalary;
+
+    public Developer(String name, double baseSalary, int hoursWorked, String language) {
+        super(name, baseSalary, hoursWorked);
+        this.language = language;
+        this.finalSalary = baseSalary;
+    }
+
+    public void calculateSalary() {
+        finalSalary = getBaseSalary();
+        if (language.equals("Java")) {
+            finalSalary += 700;
+        }
+    }
+
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Language: " + language);
+        System.out.println("Final Salary: $" + finalSalary);
+    }
+}
+
