@@ -64,7 +64,7 @@ public class Concert {
   }
 
   public void addArtist(String artistName) {
-    if (artistCount <= 5){
+    if (artistCount < 5){
       artistList += "-" + artistName + "\n";
       artistCount++;
     } else {
