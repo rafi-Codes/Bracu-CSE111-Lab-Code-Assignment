@@ -105,3 +105,101 @@ public class VIPConcert extends Concert {
     totalSoldTickets++;
   }
 }
+
+// Task 03
+public class BikeDriver extends GenericDriver {
+    private String profile;
+    public static String[] restrictedAreas = new String[1];
+    private static int count = 0;
+
+    public BikeDriver(String name, String profile) {
+        super(name);
+        this.profile = profile;
+    }
+
+    public String toString() {
+        return getName() + "'s driver profile is " + profile;
+    }
+
+    public String acceptRide(boolean hasVehicle) {
+        return super.acceptRide(hasVehicle) + "\n" + toString();
+    }
+
+    public static void restrictedAreas(String area) {
+        String[] temp = new String[count+1];
+        for (int i = 0; i < restrictedAreas.length; i++) {
+          temp[i] = restrictedAreas[i];
+        }
+        temp[temp.length - 1] = area;
+        restrictedAreas = temp;
+        count++;
+    }
+
+    public void fightRestriction(String[] areas) {
+        for (int j = 0; j < areas.length; j++) {
+            boolean restricted = false;
+            for (int i = 0; i < count; i++) {
+                if (restrictedAreas[i].equals(areas[j])) {
+                    restricted = true;
+                    break;
+                }
+            }
+            if (restricted) {
+                System.out.println(getName() + " cannot enter " + areas[j]);
+            } else {
+                System.out.println(getName() + " can enter " + areas[j]);
+            }
+        }
+    }
+}
+
+public class CarDriver extends GenericDriver {
+    private String profile;
+    public static String[] restrictedAreas = new String[1];
+    private static int count = 0;
+
+    public CarDriver(String name) {
+        super(name);
+        this.profile = "Premium";
+    }
+
+    public String toString() {
+        return getName() + "'s driver profile is " + profile;
+    }
+
+    public void hasSafetyTraining() {
+        super.hasSafetyTraining();
+        System.out.println("Premium drivers receive extra safety briefings.");
+    }
+
+    public String acceptRide(boolean hasVehicle) {
+        return super.acceptRide(hasVehicle) + "\n" + toString();
+    }
+
+    public static void restrictedAreas(String area) {
+        String[] temp = new String[count+1];
+        for (int i = 0; i < restrictedAreas.length; i++) {
+          temp[i] = restrictedAreas[i];
+        }
+        temp[temp.length - 1] = area;
+        restrictedAreas = temp;
+        count++;
+    }
+
+    public void fightRestriction(String[] areas) {
+        for (int j = 0; j < areas.length; j++) {
+            boolean restricted = false;
+            for (int i = 0; i < count; i++) {
+                if (restrictedAreas[i].equals(areas[j])) {
+                    restricted = true;
+                    break;
+                }
+            }
+            if (restricted) {
+                System.out.println(getName() + " cannot enter " + areas[j]);
+            } else {
+                System.out.println(getName() + " can enter " + areas[j]);
+            }
+        }
+    }
+}
