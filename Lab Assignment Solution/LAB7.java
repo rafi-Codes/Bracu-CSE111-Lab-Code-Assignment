@@ -11,7 +11,7 @@ public class Butterfly extends Caterpillar {
   public void eat(int amount) {
     energy += (amount * 5);
     energy -= 5;
-    System.out.println("Butterfly lost energy due to nocturnal activity");
+    System.out.println("Butterfly lost energy while flying and absorbed nectar");
   }
   
   public void transform() {
