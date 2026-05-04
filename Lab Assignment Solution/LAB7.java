@@ -109,7 +109,7 @@ public class VIPConcert extends Concert {
 // Task 03
 public class BikeDriver extends GenericDriver {
     private String profile;
-    public static String[] restrictedAreas = new String[1];
+    public static String[] restrictedAreas = new String[0];
     private static int count = 0;
 
     public BikeDriver(String name, String profile) {
@@ -155,7 +155,7 @@ public class BikeDriver extends GenericDriver {
 
 public class CarDriver extends GenericDriver {
     private String profile;
-    public static String[] restrictedAreas = new String[1];
+    public static String[] restrictedAreas = new String[0];
     private static int count = 0;
 
     public CarDriver(String name) {
@@ -208,7 +208,7 @@ public class CarDriver extends GenericDriver {
 public class Car extends Vehicle {
     private int seats;
     private static int carCount = 0;
-    private static Car[] allCars = new Car[1];
+    private static Car[] allCars = new Car[0];
 
     public Car(String model, int price, int seats) {
         super(model, price);
@@ -265,7 +265,7 @@ public class Car extends Vehicle {
 public class ElectricCar extends Vehicle {
     private int batteryCapacity;
     private static int evCount = 0;
-    private static ElectricCar[] allEVs = new ElectricCar[1];
+    private static ElectricCar[] allEVs = new ElectricCar[0];
 
     public ElectricCar(String model, int price, int batteryCapacity) {
         super(model, price);
