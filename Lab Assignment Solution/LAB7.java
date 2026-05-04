@@ -203,3 +203,96 @@ public class CarDriver extends GenericDriver {
         }
     }
 }
+
+// Task 04
+public class Car extends Vehicle {
+    private int seats;
+    private static int carCount = 0;
+    private static Car[] allCars = new Car[1];
+
+    public Car(String model, int price, int seats) {
+        super(model, price);
+        this.seats = seats;
+        addCar(this);
+        this.vehicleId = "CAR00" + carCount;
+        System.out.println("Vehicle ID: " + vehicleId + " created");
+    }
+
+    public void vehicleDetail() {
+        super.vehicleDetail();
+        System.out.println("Type: Regular Car");
+        System.out.println("Seats: " + seats);
+    }
+
+    public static void showAllAvailableCars() {
+        System.out.println("Total Car: " + carCount);
+        System.out.println("Available Cars:");
+        for (int i = 0; i < allCars.length; i++) {
+            if (!allCars[i].sold) {
+                System.out.println(allCars[i].vehicleId + " : " + allCars[i].model);
+            }
+        }
+    }
+
+    public static void showAllCars() {
+        System.out.println("Total Car: " + carCount);
+        for (int i = 0; i < allCars.length; i++) {
+            String status;
+            if (allCars[i].sold){
+                status =  "sold";
+            } else {
+                status = "available";
+            }
+            System.out.println(allCars[i].vehicleId + " : " + allCars[i].model + " - " + status);
+        }
+    }
+
+    public static void markAsSold(Car c) {
+        c.sold = true;
+    }
+
+    public static void addCar(Car c) {
+        Car[] temp = new Car[carCount+1];
+        for (int i = 0; i < allCars.length; i++) {
+          temp[i] = allCars[i];
+        }
+        temp[temp.length - 1] = c;
+        allCars = temp;
+        carCount++;
+    }
+}
+
+public class ElectricCar extends Vehicle {
+    private int batteryCapacity;
+    private static int evCount = 0;
+    private static ElectricCar[] allEVs = new ElectricCar[1];
+
+    public ElectricCar(String model, int price, int batteryCapacity) {
+        super(model, price);
+        this.batteryCapacity = batteryCapacity;
+        this.vehicleId = "EV000";
+        System.out.println("Vehicle ID: " + vehicleId + " created");
+        addEv(this);
+    }
+
+    public void vehicleDetail() {
+        super.vehicleDetail();
+        System.out.println("Type: Electric Vehicle");
+        System.out.println("Battery Capacity: " + batteryCapacity + " kWh");
+    }
+
+    public static void markAsSoldEV(ElectricCar e) {
+        e.sold = true;
+    }
+
+    public static void addEv(ElectricCar Ec) {
+        ElectricCar[] temp = new ElectricCar[evCount+1];
+        for (int i = 0; i < allEVs.length; i++) {
+          temp[i] = allEVs[i];
+        }
+        temp[temp.length - 1] = Ec;
+        allEVs = temp;
+        evCount++;
+    }
+}
+
