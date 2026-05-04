@@ -17,6 +17,12 @@ public class Butterfly extends Caterpillar {
   public void transform() {
     System.out.println("Caterpillar transforms into Butterfly");
   }
+  
+  public void showDetails() {
+    System.out.println("Food: " + food);
+    System.out.println("Age: " + age);
+    System.out.println("Energy: " + energy + " joules");
+  }
 }
 
 public class Moth extends Caterpillar {
@@ -36,6 +42,12 @@ public class Moth extends Caterpillar {
   
   public void transform() {
     System.out.println("Caterpillar transforms into Moth");
+  }
+
+  public void showDetails() {
+    System.out.println("Food: " + food);
+    System.out.println("Age: " + age);
+    System.out.println("Energy: " + energy + " joules");
   }
 }
 
@@ -163,9 +175,9 @@ public class CarDriver extends GenericDriver {
         this.profile = "Premium";
     }
 
-    public String toString() {
-        return getName() + "'s driver profile is " + profile;
-    }
+   public String toString() {
+    return getName() + "'s driver profile is a " + profile;
+   }
 
     public void hasSafetyTraining() {
         super.hasSafetyTraining();
